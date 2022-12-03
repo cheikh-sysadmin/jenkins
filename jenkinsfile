@@ -1,0 +1,13 @@
+node {
+    stage('Build') {
+        git branch: 'main', credentialsId: '9705863f-63d8-4b5e-9a0d-a941f15aa600', url: 'https://github.com/cheikh-sysadmin/jenkins.git'
+        sh 'javac Main.java'
+    }
+    stage('Run') {
+       sh 'java Main'
+    }
+    stage('Test') {
+       sh 'java Main > test.file' 
+       sh 'cat test.file'
+    }
+}
